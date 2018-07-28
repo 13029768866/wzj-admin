@@ -1,51 +1,50 @@
 <template>
     <div class="head">
-        <div class="head-left">
-            <span class="iconfont back-icon">&#xe624;</span>
+        <div class="head_left">
+            <i class="iconfont back_icon">&#xe624;</i>
         </div>
-        <div class="head-search">
-            <span class="iconfont">&#xe632;</span>
-             输入城市/景点/游玩主题
-        </div>     
-        <div class="head-right">城市
-            <span class="iconfont arrow-icon">&#xe61e;</span>
+        <div class="head_search">
+            <i class="iconfont">&#xe632;</i>
+            输入城市/景点/游玩主题
+        </div>
+        <div class="head_right">城市
+            <i class="iconfont arrow_icon">&#xe61e;</i>
         </div>
     </div>
 </template>
 <script>
 export default {
-  name: 'HomeHeader'
+    name: 'HomeHead'
 }
 </script>
-<style lang='stylus' scoped>
-@import '~styles/setting.styl';
-    .head
-     display flex
-     align-items center
-     height 0.86rem
-     background-color $bgColor
-     color #fff
-     .head-left
-      text-align center
+<style lang='stylus' scpoed>
+@import '~styles/setting.styl'
+
+  .head
+    display flex
+    align-items center
+    height 0.86rem
+    background-color $bgColor
+    color #fff
+    .head_left
       width 0.64rem
-      .back-icon
-       font-size 0.4rem
-     .head-search
+      text-align center
+      .back_icon
+        font-size 0.4rem 
+    .head_search
       display flex
       align-items center
-      flex 1 
+      flex  1
       height 0.64rem
-      margin-left: .2rem
-      padding-left: .2rem
-      background: #fff
-      border-radius: .1rem
-      color: #ccc
-     .head-right 
-       display flex
-       justify-content center
-       align-items center
-       width 1.24rem
-       .arrow-icon
-         font-size 0.3rem
+      margin-left 0.2rem
+      padding-left 0.15rem
+      border-radius .1rem
+      background-color #fff
+      color #ccc
+    .head_right
+      display flex
+      justify-content center
+      width 1.24rem
+      .arrow_icon
+        font-size 0.3rem
 </style>
- 
