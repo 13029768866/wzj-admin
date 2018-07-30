@@ -7,14 +7,20 @@
             <i class="iconfont">&#xe632;</i>
             输入城市/景点/游玩主题
         </div>
-        <div class="head_right">城市
+        <router-link to='/city'>
+        <div class="head_right">
+            {{this.city}}
             <i class="iconfont arrow_icon">&#xe61e;</i>
         </div>
+       </router-link>
     </div>
 </template>
 <script>
 export default {
-    name: 'HomeHead'
+    name: 'HomeHead',
+    props: {
+        city: String
+    }
 }
 </script>
 <style lang='stylus' scpoed>
@@ -45,6 +51,7 @@ export default {
       display flex
       justify-content center
       width 1.24rem
+      color #fff
       .arrow_icon
         font-size 0.3rem
 </style>
