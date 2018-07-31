@@ -5,22 +5,23 @@
         <city-list
             :cities = 'cities'
             :hot = 'hotCities'
-            :word  = 'word'
+            :word = 'word'
         ></city-list>
         <city-alphabet 
-            :cities = 'cities'         
-            @change = 'handleChange'
+            :cities = 'cities' 
+            @change = 'handleChange'  
         >
 
         </city-alphabet>
     </div>
 </template>
 <script>
+import axios from 'axios'
 import CityHead from './components/Head'
 import CitySearch from './components/Search'
 import CityList from './components/List'
 import CityAlphabet from './components/Alphabet'
-import axios from 'axios'
+
 export default {
     name: 'City',
     components:{
@@ -41,24 +42,22 @@ export default {
             axios.get('/api/city.json').then(this.getCityInfoSucc)
         },
         getCityInfoSucc (res) {
-            console.log(res)
             res = res.data
-            if(res.ret && res.data){
-                const data = res.data
+            if (res.ret && res.data) {
+                const data = res.data 
+                console.log(data)
                 this.cities = data.cities
-                this.hotCities =data.hotCities
+                this.hotCities = data.hotCities
             }
         },
         handleChange (word) {
             this.word = word
+            console.log(this.word)
         }
-
     },
     mounted () {
         this.getCityInfo()
     }
-
-
     
 
 }

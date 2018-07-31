@@ -1,7 +1,13 @@
 <template>
     <div class="search">
         <input class="search_input" type="text" placeholder="输入城市名或拼音">
+        <div class="search-con">
+            <ul>
+                <li></li>
+            </ul>
+        </div>
     </div>
+    
 </template>
 <script>
 export default {

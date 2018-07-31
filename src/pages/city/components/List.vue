@@ -21,16 +21,16 @@
             </div>
         </div>
         <div class="area" 
-             v-for = '(item,key) of cities'
-             :key = "key"
-             :ref = 'key'
+            v-for = '(item,key) of cities'
+            :key = 'key'
+            :ref = 'key'
         >
             <div class="title border-topbottom">{{key}}</div>
             <div class="item_list">
                 <div class="item border-bottom"
-                     v-for = 'innerItem of item'
-                     :key = innerItem.id
-                >{{innerItem.name}}</div>
+                     v-for = 'item of cities[key]'
+                     :key = 'item.id'               
+                >{{item.name}}</div>
                 
             </div>         
         </div>
@@ -46,17 +46,18 @@ export default {
         hot: Array,
         word: String
     },
-    mounted () {
-        this.scroll = new BScroll(this.$refs.wrapper)
-    },
     watch: {
-        word () {
-            if (this.word) {
-                const ele = this.$refs[this.word][0]
-                this.scroll.scrollToElement(ele)
-            }
-        }
+       word () {
+           if (this.word){
+               const ele = this.$refs[this.word][0]
+               this.scroll.scrollToElement(ele)
+           }
+       }
+    },
+    mounted () {
+        this.scroll =  new BScroll(this.$refs.wrapper)
     }
+
 }
 </script>
 <style lang="stylus" scoped>
