@@ -20,16 +20,16 @@
                 >{{item.name}}</div>
             </div>
         </div>
-        <div class="area" 
-            v-for = '(item,key) of cities'
-            :key = 'key'
-            :ref = 'key'
+        <div class="area"
+             v-for = '(city,key) of cities'
+             :key = 'key'
+             :ref = "key"   
         >
             <div class="title border-topbottom">{{key}}</div>
             <div class="item_list">
                 <div class="item border-bottom"
                      v-for = 'item of cities[key]'
-                     :key = 'item.id'               
+                     :key = 'item.id'             
                 >{{item.name}}</div>
                 
             </div>         
@@ -41,22 +41,21 @@
 import BScroll from 'better-scroll'
 export default {
     name: 'CityList',
-    props:{
+    props: {
         cities: Object,
         hot: Array,
         word: String
     },
     watch: {
-       word () {
-           if (this.word){
-               const ele = this.$refs[this.word][0]
-               this.scroll.scrollToElement(ele)
-           }
-       }
+        word () {       
+            const ele = this.$refs[this.word][0]
+            this.scroll.scrollToElement(ele)
+        }
     },
     mounted () {
-        this.scroll =  new BScroll(this.$refs.wrapper)
+        this.scroll  = new BScroll(this.$refs.wrapper)
     }
+
 
 }
 </script>

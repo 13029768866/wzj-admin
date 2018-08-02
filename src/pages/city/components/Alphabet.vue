@@ -1,13 +1,13 @@
 <template>
     <ul class="list">
-        <li class="item"  
-            v-for = 'item of words' 
-            :key = 'item'
+        <li class="item" 
+            v-for = 'item of words'
+            :key = 'item'  
             :ref = 'item'
-            @click = 'handleClick'
-            @touchstart = 'handleTouchStart' 
-            @touchmove = 'handleTouchMove' 
-            @touchend = 'handleTouchEnd'    
+            @click = 'handleClick' 
+            @touchstart = 'handleStart'
+            @touchmove = 'handleMove'
+            @touchend = 'handleEnd'        
         >{{item}}</li>        
     </ul>
 </template>
@@ -26,45 +26,43 @@ export default {
     },
     computed: {
         words () {
-            let words = []
-            for (let key in this.cities){
-                words.push(key)
+            const words = []
+            if(this.cities){
+                for(let key in this.cities){
+                    words.push(key)
+                }
             }
             return words
         }
     },
-    updated () {
-        this.starY = this.$refs['A'][0].offsetTop
-    },
     methods: {
-        handleClick (e) {       
+        handleClick (e) {
             this.$emit('change',e.target.innerHTML)
         },
-        handleTouchStart () {
+        handleStart () {
             this.touchStatus = true
         },
-        handleTouchMove (e) {
-           if (this.touchStatus){
+        handleMove (e) {
+            console.log(e)
+           if(this.touchStatus){
                if(this.timer){
-                   clearTimeout(this.timer)
+                 clearTimeout(this.timer)
                }
-               this.timer = setTimeout( () => {
+            this.tierm = setTimeout( ()=>{
                 const touchY = e.touches[0].clientY - 79
                 console.log(touchY)
                 const idx = Math.floor((touchY - this.starY) / 20)
-                if (idx >=0 && idx<this.words.length){
-                    this.$emit('change',this.words[idx])
-                    }
-               })
-                
+                this.$emit('change',this.words[idx])
+            },16)
            }
         },
-        handleTouchEnd () {
+        handleEnd () {
             this.touchStatus = false
         }
+    },
+    updated () {
+        this.starY = this.$refs['A'][0].offsetTop
     }
-    
-
 }
 </script>
 <style lang="stylus" scoped>
@@ -81,8 +79,7 @@ export default {
     top 1.58rem
     bottom 0
     width 0.4rem
-    .item
-        
+    .item    
         text-align center
         width 0.4rem
         height 0.4rem
