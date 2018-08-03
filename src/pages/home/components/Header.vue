@@ -16,10 +16,11 @@
     </div>
 </template>
 <script>
+import {mapState} from 'vuex'
 export default {
     name: 'HomeHead',
-    props: {
-        city: String
+    computed: {
+        ...mapState(['city'])
     }
 }
 </script>
@@ -50,7 +51,8 @@ export default {
     .head_right
       display flex
       justify-content center
-      width 1.24rem
+      min-width 1.04rem
+      padding 0.1rem
       color #fff
       .arrow_icon
         font-size 0.3rem

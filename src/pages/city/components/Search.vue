@@ -15,6 +15,7 @@
                 <li class="search_item border-bottom"
                     v-for='item of list'
                     :key = 'item.id'
+                    @click = 'handHotChange(item.name)'
                 >{{item.name}}</li>
                  <li class="search_item border-bottom"
                      v-show = 'hasNoData'
@@ -37,6 +38,12 @@ export default {
             keyword: '',
             list: [],
             timer: null
+        }
+    },
+    methods: {
+        handHotChange (city) {
+            this.$store.commit('changeCity',city)
+            this.$router.push('/')
         }
     },
     watch: {

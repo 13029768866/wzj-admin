@@ -6,7 +6,7 @@
                 当前城市
             </div>
             <div class="btn_list">
-                <div class="btn">北京</div>
+                <div class="btn">{{this.$store.state.city}}</div>
             </div>
         </div>
         <div class="area">
@@ -17,6 +17,7 @@
                 <div class="btn"
                      v-for = 'item of hot'
                      :key = 'item.id'
+                     @click = 'handleHotClick(item.name)'
                 >{{item.name}}</div>
             </div>
         </div>
@@ -29,7 +30,8 @@
             <div class="item_list">
                 <div class="item border-bottom"
                      v-for = 'item of cities[key]'
-                     :key = 'item.id'             
+                     :key = 'item.id' 
+                     @click = 'handleHotClick(item.name)'
                 >{{item.name}}</div>
                 
             </div>         
@@ -45,6 +47,12 @@ export default {
         cities: Object,
         hot: Array,
         word: String
+    },
+    methods: {
+        handleHotClick (city) {
+            this.$store.commit('changeCity',city)
+            this.$router.push('/')
+        }
     },
     watch: {
         word () {       
