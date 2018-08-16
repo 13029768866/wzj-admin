@@ -56,6 +56,8 @@ export default {
     },
     watch: {
         word () {       
+        	console.log(this.word)
+        	console.log(this.$refs[this.word])
             const ele = this.$refs[this.word][0]
             this.scroll.scrollToElement(ele)
         }

@@ -78,7 +78,7 @@ export default {
     right 0
     top 1.58rem
     bottom 0
-    width 0.4rem
+    background-color: red;
     .item    
         text-align center
         width 0.4rem
